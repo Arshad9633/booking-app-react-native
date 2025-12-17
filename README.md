@@ -109,21 +109,17 @@ Firestore files (example structure):
 - **Keyboard Aware Scroll View** (fix keyboard overlay issues)
 
 ---
-
-## Installation & Setup
-
-### 1) Install dependencies
-```bash
-npm install
-
 ## Screenshots
 
-<p align="center">
-  <img src="screenshots/home.png" width="240" />
-  <img src="screenshots/booking.png" width="240" />
-  <img src="screenshots/services.png" width="240" />
-</p>
+### Home
+![Home Screen](screenshots/home.png)
 
-<p align="center">
-  <img src="screenshots/contact.png" width="240" />
-</p>
+### Booking
+![Booking Screen](screenshots/booking.png)
+
+### Services
+![Services Screen](screenshots/service.png)
+
+### Contact
+![Contact Screen](screenshots/contact.png)
+
