@@ -118,7 +118,7 @@ Firestore files (example structure):
 ![Booking Screen](screenshots/booking.jpeg)
 
 ### Services
-![Services Screen](screenshots/service.jpeg)
+![Services Screen](screenshots/services.jpeg)
 
 ### Contact
 ![Contact Screen](screenshots/contact.jpeg)
