@@ -112,14 +112,14 @@ Firestore files (example structure):
 ## Screenshots
 
 ### Home
-![Home Screen](screenshots/home.png)
+![Home Screen](screenshots/home.jpeg)
 
 ### Booking
-![Booking Screen](screenshots/booking.png)
+![Booking Screen](screenshots/booking.jpeg)
 
 ### Services
-![Services Screen](screenshots/service.png)
+![Services Screen](screenshots/service.jpeg)
 
 ### Contact
-![Contact Screen](screenshots/contact.png)
+![Contact Screen](screenshots/contact.jpeg)
 
