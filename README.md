@@ -1,50 +1,129 @@
-# Welcome to your Expo app 👋
+# Salon Booking App (React Native + Expo Router)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A mobile booking dashboard app built with **React Native (Expo)**, **Expo Router (tabs navigation)** and **NativeWind (Tailwind CSS)**.  
+Users can browse services, book appointments, view live available times, accept Terms & Conditions, and submit contact messages.
 
-## Get started
+---
 
-1. Install dependencies
+## Features implemented
 
-   ```bash
-   npm install
-   ```
+### ✅ Navigation (Tabs)
+- Bottom tab navigation using **Expo Router**
+- Tabs/pages:
+  - `Home`
+  - `Booking`
+  - `Service`
+  - `Contact`
 
-2. Start the app
+Folder layout (Expo Router):
+- `app/(tabs)/_layout.tsx` → Tabs configuration
+- `app/(tabs)/index.tsx` → Home screen
+- `app/(tabs)/booking.tsx` → Booking form
+- `app/(tabs)/service.tsx` → Services list + filter/search
+- `app/(tabs)/contact.tsx` → Contact form
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+### ✅ Global Screen Background
+- A reusable `Screen` wrapper component applies:
+  - Full screen background image (`images.bg`)
+  - Dark overlay to match salon theme
+  - Safe-area support (top)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+File:
+- `components/Screen.tsx`
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+### ✅ Home Page (Animated)
+- Home screen design based on the provided UI reference
+- Button navigates to Booking page
+- Animation support via **react-native-reanimated**
 
-When you're ready, run:
+Files:
+- `app/(tabs)/index.tsx`
+- `babel.config.js` configured for NativeWind + Reanimated plugin
 
+---
+
+### ✅ Booking Form (Mobile friendly)
+- Responsive layout (works on small devices)
+- Keyboard-safe scrolling using `react-native-keyboard-aware-scroll-view`
+- Required fields + validation:
+  - Appointment Date (calendar picker)
+  - Servicer
+  - Services (checkbox list)
+  - Live available start times
+  - Name, Phone (digits only), Email (format check), Address
+  - Terms & Conditions required
+
+Booking flow:
+1. User fills the form
+2. Presses **Book now**
+3. Confirmation modal opens showing booking details
+4. Only when user confirms, data is saved to DB
+5. Form resets after success
+
+---
+
+### ✅ Terms & Conditions Modal
+- Clicking Terms & Conditions opens a modal
+- User can accept inside modal, then checkbox becomes checked
+
+---
+
+### ✅ Service Page (Browse & Quick Book)
+- Service list UI cards
+- Search box
+- Category filter pills (All, Hair, Beard, Skin, Ladies, Other)
+- “Book now” can navigate to Booking page
+- Support for passing a service selection to booking via route params
+  - Booking screen can auto-select a service if passed from Service page
+
+---
+
+### ✅ Contact Page
+- Styled contact form (Name, Email, Phone, Message)
+- Validation + keyboard-safe scrolling
+
+---
+
+### ✅ Database (Firestore)
+- Project stores bookings in Firestore
+- Booking is saved only after confirm step
+- Includes time fields for scheduling logic (startMin, durationMin, endMin, buffer)
+
+Firestore files (example structure):
+- `lib/firebase.ts` → Firebase init
+- `services/bookingService.ts` → Create booking
+- `hooks/useAvailability.ts` → Fetch existing bookings and compute available start times
+
+---
+
+## Tech Stack
+- **Expo + React Native**
+- **Expo Router** (file-based routing with Tabs)
+- **NativeWind** (Tailwind CSS for React Native)
+- **React Native Reanimated** (animations)
+- **Firestore** (database)
+- **Keyboard Aware Scroll View** (fix keyboard overlay issues)
+
+---
+
+## Installation & Setup
+
+### 1) Install dependencies
 ```bash
-npm run reset-project
-```
+npm install
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Screenshots
 
-## Learn more
+<p align="center">
+  <img src="screenshots/home.png" width="240" />
+  <img src="screenshots/booking.png" width="240" />
+  <img src="screenshots/services.png" width="240" />
+</p>
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+<p align="center">
+  <img src="screenshots/contact.png" width="240" />
+</p>
